@@ -1,0 +1,20 @@
+{
+  "name": "mongoose-express",
+  "version": "1.0.0",
+  "description": "mongoose with express app",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "Tristan Varewijck",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "colors": "^1.4.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.12.13",
+    "nodemon": "^2.0.7"
+  }
+}

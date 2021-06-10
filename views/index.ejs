@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+</head>
+<body>
+    <main class="index">
+        <!--  ALL PRODUCTS  -->
+        
+       <section class="main-position">
+        <h1 class="page-title">Random Movies to Watch!</h1>
+            <a class="new-movie" href="/movies/add">Add new Movie +</a>
+                <div class='grid-system'>
+                <% Movies.forEach(function(Movie){ %>
+                    <a href="/movies/<%= Movie.id %>"> 
+                        <article>
+                        <h1> <%= Movie.name %> </h1>
+                        <ul>
+                            <li>Price: $<%= Movie.price %>,-</li>
+                            <li>Categorie(s): <%= Movie.categorie %></li>
+                            <%if (Movie.inStock === true) {%>
+                                <li>Instock: Yes</li>
+                            <% } else { %>
+                                <li>Instock: No</li>
+                            <% } %>
+                        </ul>
+            
+            </article>
+            </a>
+          <% }); %>
+        </div>
+        </section>
+    </main>
+    
+</body>
+</html>

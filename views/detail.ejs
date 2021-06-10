@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+</head>
+<body>
+    <main class="detail">
+
+        <a class="goBack" href="/movies"> < go back </a>
+        <h1><%= clickedMovie.name %></h1>
+        <p>$<%= clickedMovie.price %>,-</p>
+        <p><%= clickedMovie.categorie %></p>
+        <p><%= clickedMovie.inStock %></p>
+        <p><%= clickedMovie.description %></p>
+
+        <a href="/movies/update"></a>
+    </main>
+    
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+</head>
+<body>
+    <main>
+        <div class="form-container">
+            <h1>Add a New Movie to the Movielist :)</h1>
+            <form action="/movies" method="POST">
+            
+            <label for="name">Title:</label>
+            <input type="text" name="name" id="name"> <br>
+
+            <label for="price">Price:</label>
+            <input type="number" name="price" id="price"> <br> 
+
+            <label for="categorie">Genre(s):</label>
+            <input type="text" name="categorie" id="categorie"> <br>    
+
+            <label for="description">Description:</label>
+            <textarea name="description" id="description"></textarea>
+            <input type="submit">
+            
+            </form>
+        </div>
+
+    </main>
+    
+</body>
+</html>
