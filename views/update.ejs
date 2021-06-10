@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+</head>
+<body>
+    <main>
+        <div class="form-container">
+            <h1>Update this Movie.</h1>
+            <form action="/movies?_method=PATCH" method="POST">
+            
+            <label for="name">Title:</label>
+            <input type="text" name="name" id="name" value="<%= clickedMovie.name %>"> <br>
+
+            <label for="price">Price:</label>
+            <input type="number" name="price" id="price" value="<%= clickedMovie.price %>"> <br> 
+
+            <label for="categorie">Genre(s):</label>
+            <input type="text" name="categorie" id="categorie" value="<%= clickedMovie.categorie %>"> <br>    
+
+            <label for="description">Description:</label>
+            <textarea name="description" id="description"><%= clickedMovie.description %></textarea>
+            <input type="submit">
+
+
+
+    </main>
+</body>
+</html>

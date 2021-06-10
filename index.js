@@ -63,7 +63,17 @@ app.get('/movies/:id', async (req, res) => {
 })
 
 // UPDATE 1 PRODUCT
+// UPDATE A MOVIE
+app.get('/movies/:id/update', async (req, res) => {
+    let { id } = req.params; 
+    let clickedMovie = await Movie.findById(id);
+    res.render('update', {clickedMovie}); 
+})
 
+    app.patch('/movies'), async (req, res) => {
+    
+    res.redirect(`/movies/${newMovie._id}`)
+}
 
 
 // DELETE PRODUCT
