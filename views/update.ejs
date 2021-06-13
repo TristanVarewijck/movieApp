@@ -7,7 +7,7 @@
     <main>
         <div class="form-container">
             <h1>Update this Movie.</h1>
-            <form action="/movies?_method=PATCH" method="POST">
+            <form action="/movies/<%=clickedMovie._id%>?_method=PUT" method="POST">
             
             <label for="name">Title:</label>
             <input type="text" name="name" id="name" value="<%= clickedMovie.name %>"> <br>
@@ -21,6 +21,8 @@
             <label for="description">Description:</label>
             <textarea name="description" id="description"><%= clickedMovie.description %></textarea>
             <input type="submit">
+            </form>
+        </div>
 
 
 

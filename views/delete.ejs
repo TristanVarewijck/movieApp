@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+</head>
+<body>
+    <main>
+        <div class="form-container">
+            <main class="detail">
+
+                <a class="goBack" href="/movies"> < go back </a>
+                <h1><%= clickedMovie.name %></h1>
+                <p>$<%= clickedMovie.price %>,-</p>
+                <p><%= clickedMovie.categorie %></p>
+                <p><%= clickedMovie.inStock %></p>
+                <p><%= clickedMovie.description %></p>
+
+            <form action="/movies/<%=clickedMovie._id%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure?');">
+            <input type="submit" value="DELETE">
+            </form>
+
+        </div>
+
+    </main>
+    
+</body>
+</html>

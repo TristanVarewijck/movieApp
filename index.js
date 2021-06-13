@@ -10,9 +10,6 @@ const mongoose = require('mongoose');
 let bp= require('body-parser'); 
 var methodOverride = require('method-override')
 
-// override with POST having ?_method=DELETE
-app.use(methodOverride('_method'))
-
 mongoose.connect('mongodb://localhost:27017/movieApp', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
     .then(() => {
         console.log("MONGO CONNECTION OPEN!!!".brightBlue)
@@ -28,6 +25,8 @@ app.use(express.static('public'));
 
 app.use(bp.json())
 app.use(bp.urlencoded({ extended: true }))
+// override with POST having ?_method=DELETE
+app.use(methodOverride('_method'))
 
 
 // ALL PRODUCTS 
@@ -36,7 +35,7 @@ app.get('/', (req, res) => {
 }); 
 
 app.get('/movies', async (req, res) => {
-    let Movies = await Movie.find({});
+    let Movies = await Movie.find({}, {_id:0}).sort({"price":1});
     res.render('index', {
       Movies, 
   });
@@ -68,12 +67,29 @@ app.get('/movies/:id/update', async (req, res) => {
     let { id } = req.params; 
     let clickedMovie = await Movie.findById(id);
     res.render('update', {clickedMovie}); 
+}); 
+
+
+app.put('/movies/:id', async (req, res) => {
+    let { id } = req.params; 
+    const updatedMovie = await Movie.findByIdAndUpdate(id, req.body, {runValidators: true, new: true}); 
+    res.redirect(`/movies/${updatedMovie._id}`); 
+    
+}); 
+
+
+app.get('/movies/:id/delete', async (req, res) => {
+    let { id } = req.params; 
+    let clickedMovie = await Movie.findById(id); 
+    res.render('delete',{clickedMovie})
 })
 
-    app.patch('/movies'), async (req, res) => {
-    
-    res.redirect(`/movies/${newMovie._id}`)
-}
+app.delete('/movies/:id', async (req, res) => {
+    let { id } = req.params; 
+    await Movie.findByIdAndDelete(id); 
+    res.redirect('/'); 
+})
+
 
 
 // DELETE PRODUCT
